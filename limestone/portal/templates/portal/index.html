@@ -1,0 +1,59 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Mods</title>
+    <style>
+        .scrollable-list {
+            width: 600px; /* Set the desired width */
+            height: 200px; /* Set the desired height */
+            overflow-x: auto;
+            white-space: nowrap;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .mod-container {
+            display: inline-block;
+            margin-right: 20px;
+            max-width: 150px; /* Set the maximum width for each mod container */
+        }
+        .mod-title {
+            font-size: 14px; /* Set the desired font size for the title */
+            margin-bottom: 5px;
+        }
+        .mod-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 100px; /* Set the maximum height for each image */
+        }
+        .search-bar {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="search-bar">
+    <form action="" method="get">
+        <label for="search-query">Search Mods:</label>
+        <input type="text" id="search-query" name="query" value="{{ current_query }}">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div class="scrollable-list">
+    {% for hit in hits %}
+        <div class="mod-container">
+            <h2 class="mod-title">{{ hit.title }}</h2>
+            <a href="https://modrinth.com/mod/{{ hit.slug }}" target="_blank">
+                <img class="mod-image" src="{{ hit.icon_url }}" alt="{{ hit.title }} Icon">
+            </a>
+        </div>
+    {% endfor %}a
+</div>
+
+</body>
+</html>
